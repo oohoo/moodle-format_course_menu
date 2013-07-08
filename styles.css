@@ -1,0 +1,245 @@
+/**
+ * *************************************************************************
+ * *                                Chairman                              **
+ * *************************************************************************
+ * @package mod                                                          **
+ * @subpackage chairman                                                  **
+ * @name Chairman                                                        **
+ * @copyright oohoo.biz                                                  **
+ * @link http://oohoo.biz                                                **
+ * @author Dustin Durand                                                 **
+ * @license                                                              **
+ * http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later              **
+ * *************************************************************************
+ * ************************************************************************ */
+
+.cmf_cell_selection_button {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #aaaaaa;
+    border-radius: 2px;
+}
+
+.cmf_cell_selection_button:hover {
+    -moz-box-shadow: 0 0 5px #888;
+-webkit-box-shadow: 0 0 5px#888;
+box-shadow: 0 0 5px #888;
+}
+
+.course_menu_full_cell {
+    width: 85%;
+} 
+
+#cmf_header_menu_option {
+    display: inline;
+    margin: 3px;
+}
+
+.cmf_header_display {
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #aaaaaa;
+    border-radius: 2px;
+}
+
+.cmf_target_image {
+    display: inline-block;
+}
+
+ul#format_course_menu_list li.ui-menu-divider {
+    display: block;
+    height:100%;
+    border-width: 0;
+}
+
+.cmf_pre_section_header {
+    padding: 3px;
+}
+
+.cmf_t_left {
+    float: left;
+}
+
+.cmf_t_right {
+    float: right; 
+}
+
+.cmf_content_wrapper {
+    width:  100%;
+    height: 100%;
+    overflow: hidden;
+    margin: 5px;
+}
+
+.course_menu_target li ul li {
+    vertical-align: top;
+}
+
+.cmf_garbage_main {
+    position: relative;
+    margin-top: 10px;
+    background: transparent;
+}
+
+.cmf_garbage {
+    list-style-type: none;
+    height:20px;
+    margin: auto;
+    display: block;
+    padding: 5px;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #aaaaaa;
+    text-align: center;
+        -webkit-box-shadow: 0 0 40px #222;
+    -moz-box-shadow: 0 0 40px #222;
+    box-shadow: 0 0 40px #222;
+}
+
+.cmf_garbage_title {
+    
+    position: absolute;
+    text-align: center;
+    width:  100%;
+
+    text-shadow:1px 1px 2px rgba(64,64,64,1);
+    font-weight:normal;
+    color:#BDBDBD;
+    letter-spacing:10pt;
+    word-spacing:-20pt;
+    font-size:18px;
+    text-align:center;
+    font-family:arial black, sans-serif;
+}
+
+.course_menu_content_main {
+    overflow: hidden;
+}
+
+.course_menu_content {
+    padding: 5px;
+}
+
+ul#format_course_menu_list {
+    list-style-type: none;
+    margin-bottom: 5px;
+
+}
+
+ul#format_course_menu_list li {
+    display: inline;
+}
+
+ul#format_course_menu_list li a {
+    display: inline;
+}
+
+ul.course_menu_target {
+    list-style-type: none;
+    text-align: center;
+    width: 75%;
+    overflow: hidden;
+    margin: auto;
+    border-color: black;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #aaaaaa;
+    text-align: center;
+    margin-top: 10px;
+    padding:   3px;
+    padding-top:   20px;
+    padding-bottom:   20px;
+}
+
+ul.course_menu_target_row, ul.course_menu_target_row_full   {
+    list-style-type: none;
+    padding:3px;
+    text-align: center;
+    width: 100%;
+    min-height: 25px;
+    background: #f4f4f4;
+    max-height: 80px;
+    overflow: hidden;
+    margin: auto;
+    margin-top: 10px;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #aaaaaa;
+    text-align: center;
+}
+
+ul.course_menu_target_row  li, ul.course_menu_target_row_full li {
+    display: inline-block;
+    padding:10px;
+    text-align: center;
+    border-style: solid;
+    border-width: 1px;  
+    border-color: #DDD;
+    margin: 20px;
+    overflow: hidden;
+}
+
+ul.course_menu_target_row  li a {
+    display: inline;
+}
+
+#course_menu_content {
+    border-style: solid;
+    border-width: 1px;  
+    margin-bottom: 5px;
+    border-color: #DDD;
+}
+
+.course_menu_option_list_content {
+    z-index: 9999999;
+}
+
+.format_course_menu_list span.ui-menu-icon {
+    display: none;
+}
+
+.fixed_header {
+    position: fixed;
+    top: -5px;
+    left: 20%;
+    width: 60%;
+    z-index:    99999;
+    -webkit-box-shadow: 0 0 40px #222;
+    -moz-box-shadow: 0 0 40px #222;
+    box-shadow: 0 0 40px #222;
+}
+
+.fixed_header:active, .fixed_header:hover {
+    opacity: 1;
+}
+
+.fixed_footer {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+    width: 200px;
+    z-index:    99999;
+}
+
+
+.course_menu_placeholder {
+    display: inline-block;
+}
+
+.cmf_main_header {
+    text-align: center;
+    margin: 10px;
+    border-style: dashed;
+    border-width: 1px;
+    border-color: #aaaaaa;
+}
+
+.course-content ul.topics {margin:0;}
+.course-content ul.topics li.section {list-style: none;margin:0 0 5px 0;padding:0;}
+.course-content ul.topics li.section .content {margin:0 40px;}
+.course-content ul.topics li.section .left {float:left;}
+.course-content ul.topics li.section .right {float:right;}
+.course-content ul.topics li.section .left,
+.course-content ul.topics li.section .right {width:40px;text-align:center;padding: 6px 0;}
+.course-content ul.topics li.section .right img.icon { padding: 0 0 4px 0;}
+.course-content ul.topics li.section .left .section-handle img.icon { padding:0; vertical-align: baseline; }

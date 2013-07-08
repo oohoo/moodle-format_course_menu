@@ -1,0 +1,42 @@
+/**
+ * *************************************************************************
+ * *                                Chairman                              **
+ * *************************************************************************
+ * @package mod                                                          **
+ * @subpackage chairman                                                  **
+ * @name Chairman                                                        **
+ * @copyright oohoo.biz                                                  **
+ * @link http://oohoo.biz                                                **
+ * @author Dustin Durand                                                 **
+ * @license                                                              **
+ * http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later              **
+ * *************************************************************************
+ * ************************************************************************ */
+
+/**
+* IMPORTANT: This css is only applied when course IS NOT IN EDIT MODE.
+*
+*/
+
+ul.course_menu_target_row, ul.course_menu_target_row_full {
+    border-color: #DDD;
+    border-style: solid;
+}
+
+ul.course_menu_target {
+    border-color: #DDD;
+    border-style: solid;
+}
+
+.cmf_header_display {
+    border-color: #DDD;
+    border-style: solid;
+}
+
+.cmf_header_display {
+    border-style: none;
+}
+
+.cmf_main_header {
+    border-style: none;
+}
