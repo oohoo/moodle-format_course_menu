@@ -331,13 +331,24 @@ class format_course_menu extends format_base {
         return $courseformatoptions;
     }
 
+    /**
+     * Adds form elements 
+     * 
+     * @global moodle_page $PAGE
+     * @global type $CFG
+     * @param type $mform
+     * @param type $forsection
+     * @return type
+     */
     function create_edit_form_elements(&$mform, $forsection = false) {
-        global $CFG;
+        global $CFG, $PAGE;
 
         $script = "<script>var course_menu_strings = new Array();</script>";
         $script .= "<script>course_menu_strings['wwwroot'] ='$CFG->wwwroot';</script>";
-        $script .= "<script src='$CFG->wwwroot/course/format/course_menu/init.js'></script>";
 
+        if(!$PAGE->headerprinted)
+            $this->page_load_main_course_js();
+        
         $mform->addElement('html', $script);
         return parent::create_edit_form_elements($mform, $forsection);
     }
@@ -366,7 +377,7 @@ class format_course_menu extends format_base {
             $layout->course = $COURSE->id;
             $DB->insert_record('course_menu', $layout);
         }
-
+        
 
         if ($oldcourse !== null) {
             $data = (array) $data;
@@ -394,40 +405,76 @@ class format_course_menu extends format_base {
     }
 
     /**
+     * This function is called after the course has been set on the page. We use this to include various JS,
+     * depending on the course page.
+     * 
      * 
      * @global moodle_page $PAGE
      * @global type $COURSE
      * @param moodle_page $page
      */
     public function page_set_course(moodle_page $page) {
+       parent::page_set_cm($page);
+       $this->page_load_main_course_js();
+    }
+    
+    /**
+     * Loads the required jquery & JS needed for course menu
+     */
+    private function page_load_main_course_js() {
         global $PAGE, $COURSE, $CFG;
-
-        parent::page_set_cm($page);
-
         
+        //get page url - if not set then ignore it
         $url = $PAGE->has_set_url() ? $PAGE->url : "";
-        
-        $regex_url = "/" . preg_quote($CFG->wwwroot . "/course/view.php?id=", "/") . "[\d]*|"
-                . preg_quote($CFG->wwwroot . "/course/edit.php?id=", "/") . "[\d]*/";
-        $is_course_main = preg_match($regex_url, $url);
-        
-        if ($is_course_main === 1) {
-            
-            $this->load_jQuery();
-            $context = context_course::instance($COURSE->id);
-            $is_editting = $PAGE->user_is_editing() and has_capability('moodle/course:update', $context);
 
+        //check if its the main course view page
+        $regex_url = "/" . preg_quote($CFG->wwwroot . "/course/view.php?id=", "/") . "[\d]*" . "[\d]*/";
+        $is_course_main = preg_match($regex_url, $url);
+
+        //check if course mod_edit page
+        $regex_editing_url = "/" . preg_quote($CFG->wwwroot . "/course/edit.php?id=", "/") . "[\d]*/";
+        $is_course_editing_main = preg_match($regex_editing_url, $url);
+        
+        //if either if main view or main edit
+        if($is_course_main === 1 || $is_course_editing_main === 1) {
+            
+            //load jquery
+            $this->load_jQuery();
+            
+            //dynamic colors
+            $PAGE->requires->css('/course/format/course_menu/dynamic_colors.php?id=' . $COURSE->id);
+            
+            //if main page
+            if($is_course_main === 1) {
+            $context = context_course::instance($COURSE->id);//get context
+            $is_editting = $PAGE->user_is_editing() and has_capability('moodle/course:update', $context);//is editing mode
+
+            //if were not editing, then override display css (display only css)
             if (!$is_editting)
                 $PAGE->requires->css('/course/format/course_menu/display_override.css');
-
-
+            }
+           
+         //if editing
+         if ($is_course_editing_main === 1) {
             $PAGE->requires->css('/course/format/course_menu/jquery/plugin/colorpicker/jquery.colorpicker.css');
             $PAGE->requires->js('/course/format/course_menu/jquery/plugin/colorpicker/jquery.colorpicker.js');
             $PAGE->requires->js('/course/format/course_menu/init.js');
-            $PAGE->requires->css('/course/format/course_menu/dynamic_colors.php?id=' . $COURSE->id);
+          }   
+            
         }
+        
+        
     }
 
+    /**
+     * An function to interface PHP (server) based information to JS (browser)
+     * 
+     * Loads a set of language strings, and other server based info to be used in the JS.
+     * 
+     * @global moodle_database $DB
+     * @global type $CFG
+     * @global type $COURSE
+     */
     public function load_php_strings() {
         global $DB, $CFG, $COURSE;
         
@@ -449,11 +496,27 @@ class format_course_menu extends format_base {
         echo "course_menu_strings['include_icons'] = ".$include_icons.";";
         echo "course_menu_strings['new_header'] = '".get_string('new_header', 'format_course_menu')."';";
         
+        //Remove icons if user has set them to be ignored
+        echo <<< ICON
+        /**
+        * Hides the CM icons if set to hide in course menu settings
+        * 
+        */
+        $(function() {
+            if(course_menu_strings['include_icons'] !== 1) 
+                $("li[data_type=course_menu_element_cm] img").hide();
+        });
         
+ICON;
         
         echo "</script>";
     }
 
+    /**
+     * Loads jquery using the built in (if moodle 2.5+) or uses an included version if < moodle 2.4
+     * 
+     * @global moodle_page $PAGE
+     */
     public function load_jQuery() {
         global $PAGE;
 

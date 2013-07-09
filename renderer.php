@@ -157,10 +157,11 @@ class format_course_menu_renderer extends format_section_renderer_base {
      * 
      * @global moodle_database $DB
      * @global object $COURSE
+     * @global moodle_page $PAGE 
      * @return type
      */
     public function course_menu_main_header_elements() {
-         global $DB, $COURSE;
+         global $DB, $COURSE, $PAGE;
          
          //get course menu instance
          $course_menu = $DB->get_record('course_menu', array('course'=>$COURSE->id));
@@ -176,7 +177,14 @@ class format_course_menu_renderer extends format_section_renderer_base {
                                        $course_menu->id, array(), $course_menu->header);
          
          //if its empty, don't output anything
-         if(empty($currenttext)) return;
+         if(empty($currenttext)) {
+             
+             if($PAGE->user_is_editing()) {
+                 $currenttext = "<h1>" . get_string('main_header_editing_default', 'format_course_menu') . "</h1>";
+             } else {
+                 return;
+             }
+         }
          
          //output html
          echo $currenttext;

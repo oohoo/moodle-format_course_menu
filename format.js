@@ -110,14 +110,6 @@ $(function() {
 
 });
 
-/**
-* Hides the CM icons if set to hide in course menu settings
-* 
-*/
-function conditional_hide_activity_icons() {
-    if(course_menu_strings['include_icons'] !== 1) 
-        $("li[data_type=course_menu_element_cm] img").hide();
-}
 
 /**
  * A function that conditionally converts our static menu & garbage to become floating
@@ -402,9 +394,6 @@ function sortables_init() {
        initalize_header(horiz_li)
     });
     
-    //check if icons need to be hidden based on course menu settings
-    conditional_hide_activity_icons();
-    
     //initalize the dialog for editing the main header
     initialize_main_header_dialog();
 }
@@ -417,8 +406,8 @@ function initialize_main_header_dialog() {
     //initalize header
     $(".cmf_header_dialog").dialog({
         modal: true,
-        width: 850,
-        height: 365,
+        width: 930,
+        height: 620,
         autoOpen: false,
         
         //on close event, pull new header html via ajax

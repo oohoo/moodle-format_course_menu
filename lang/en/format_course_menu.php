@@ -24,7 +24,7 @@ $string['page-course-view-topics-x'] = 'Any course page in topics format';
 $string['hidefromothers'] = 'Hide topic';
 $string['showfromothers'] = 'Show topic';
 
-$string['garbage'] = 'Garbage';
+$string['garbage'] = 'Drop To Delete';
 $string['confirm_delete_message'] = 'Are you sure you want to delete this element?';
 
 $string['backgroundcolorpicker'] = 'Background Colour';
@@ -55,3 +55,4 @@ $string['no_course_menu'] = 'Course Menu Instance Doesn\'t Exist';
 $string['save'] = 'Save';
 
 
+$string['main_header_editing_default'] = 'Click Here to Edit Header<br/>or Upload an Image';

@@ -13,6 +13,10 @@
  * *************************************************************************
  * ************************************************************************ */
 
+.cmf_main_header {
+    min-height: 50px;
+}
+
 .cmf_cell_selection_button {
     border-style: solid;
     border-width: 1px;
@@ -106,8 +110,6 @@ ul#format_course_menu_list li.ui-menu-divider {
     font-weight:normal;
     color:#BDBDBD;
     letter-spacing:10pt;
-    word-spacing:-20pt;
-    font-size:18px;
     text-align:center;
     font-family:arial black, sans-serif;
 }
