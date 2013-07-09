@@ -351,6 +351,9 @@ function sortables_init() {
                 
     });
     
+    $(CMF_MENU_ULS_SELECTOR_C + " li div a").click(function(e) {
+        e.preventDefault();
+    });
     
     
     //abstract event for when a menu drop has completed
@@ -477,6 +480,8 @@ function initalize_header(horiz_li) {
  * @param {li} item
  */
 function post_menu_drag_callback(item) {
+    //allow link capabilities again - firefox workaround
+    $(item).find("div li a").unbind('click');
     return false;
 }
 
