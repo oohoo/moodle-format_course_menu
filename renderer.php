@@ -174,7 +174,7 @@ class format_course_menu_renderer extends format_section_renderer_base {
          
          //replace relative links to abs. links
          $currenttext = file_prepare_draft_area($draftid_editor, $context->id, 'format_course_menu', 'cmf_header',
-                                       $course_menu->id, array(), $course_menu->header);
+                                       0, array(), $course_menu->header);
          
          //if its empty, don't output anything
          if(empty($currenttext)) {

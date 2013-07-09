@@ -49,7 +49,7 @@ if ($fromform = $mform->get_data()){
     
     //save uploaded images, and replace absolute links with relative links
     $headertext = file_save_draft_area_files($draftid_editor, $context->id, 'format_course_menu', 'cmf_header',
-                                          $course_menu->id, $mform->get_editor_options(), $fromform->cmf_header['text']);
+                                          0, $mform->get_editor_options(), $fromform->cmf_header['text']);
     //update header 
     $course_menu->header = $headertext;
     
@@ -75,7 +75,7 @@ if (empty($data->id)) {
 
 //load text with absolute links from relative links
 $currenttext = file_prepare_draft_area($draftid_editor, $context->id, 'format_course_menu', 'cmf_header',
-                                       $course_menu->id, $mform->get_editor_options(), $data->header);
+                                       0, $mform->get_editor_options(), $data->header);
 
 //load defaults into editor
 $data->cmf_header = array('text'=>$currenttext, 'format'=>$data->format, 'itemid'=>$draftid_editor);
