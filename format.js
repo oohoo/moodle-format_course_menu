@@ -328,7 +328,7 @@ function sortables_init() {
      */
     $(CMF_MENU_ULS_SELECTOR_C).sortable({
         connectWith: CMF_MAIN_ROW_ULS_SELECTOR_C +", "+CMF_MAIN_UL_SELECTOR_C,//on page load it's always assumed to be single cell
-        containment: '.course_menu_content',//cannot leave cmf main div
+
         placeholder: "ui-state-highlight course_menu_placeholder",//placeholder class
         tolerance: "pointer",
         
@@ -575,7 +575,7 @@ function create_sortable_row(selector) {
             ui.placeholder.html(" &nbsp; ");//add content to placeholder to fix vert. align issues
             load_sortable_targets();//load target assist images
         },
-        containment: '.course_menu_content',//keep all elements contained to main content div
+
         tolerance: "pointer",
                 
         //on recieving a new LI
@@ -928,6 +928,7 @@ function cmf_ajax_update() {
         
         //run all of the inits for sortables
         sortables_init();
+        update_icon_visibility();
         
         //reset the current button mode (full/single mode) by clicking twice
         $(".cmf_cell_selection_button[active=1]").click();

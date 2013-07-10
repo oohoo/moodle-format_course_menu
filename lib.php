@@ -503,9 +503,13 @@ class format_course_menu extends format_base {
         * 
         */
         $(function() {
+            update_icon_visibility();
+        });
+        
+        function update_icon_visibility() {
             if(course_menu_strings['include_icons'] !== 1) 
                 $("li[data_type=course_menu_element_cm] img").hide();
-        });
+        }
         
 ICON;
         
