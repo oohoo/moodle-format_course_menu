@@ -112,8 +112,13 @@ class course_menu_cm {
         //content div
         $html .= html_writer::start_tag('div', array('class' => 'cmf_content_wrapper'));
 
-        $html .= $course_renderer->course_section_cm_name($mod);
-
+       
+        //Not Pretty... but required to support moodle 2.4
+        if(moodle_major_version() >= '2.5')
+            $html .= $course_renderer->course_section_cm_name($mod);
+        else
+           $html .= course_menu_cm::moodle_2_4_cm_display($mod, $course);
+        
         //end content div
         $html .= html_writer::end_tag('div');
 
@@ -122,6 +127,41 @@ class course_menu_cm {
 
 
         //return html representation of element
+        return $html;
+    }
+    
+    /**
+     * Provides legacy support for moodle 2.4
+     * Prints the logo and link for a given module in a given course!
+     * 
+     * 
+     * @param cm_info $mod
+     * @param object $course
+     * @return string html of logo and link for a module
+     */
+    private static function moodle_2_4_cm_display($mod, $course) {
+
+        // Get data about this course-module
+        list($content, $instancename) =
+                get_print_section_cm_text($mod, $course);
+
+        $html = '';
+        $onclick = htmlspecialchars_decode($mod->get_on_click(), ENT_QUOTES);
+
+        if ($url = $mod->get_url()) {
+            // Display link itself.
+            $activitylink = html_writer::empty_tag('img', array('src' => $mod->get_icon_url(),
+                        'class' => 'iconlarge activityicon', 'alt' => $mod->modfullname)) .
+                    html_writer::tag('span', $instancename, array('class' => 'instancename'));
+            $html .= html_writer::link($url, $activitylink, array('class' => '', 'onclick' => $onclick));
+
+            // If specified, display extra content after link.
+            if ($content) {
+                $html .= html_writer::tag('div', $content, array('class' =>
+                            trim('contentafterlink ' . $textclasses)));
+            }
+        }
+
         return $html;
     }
 

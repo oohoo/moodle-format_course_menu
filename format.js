@@ -13,6 +13,10 @@
  * *************************************************************************
  * ************************************************************************ */
 
+/**
+ * This JS is only applied to a course menu in EDIT MODE
+ */
+
 //Garbage UL Drop Point
 var CMF_MAIN_CONTENT = "course_menu_content";
 var CMF_MAIN_CONTENT_C = "."+CMF_MAIN_CONTENT;

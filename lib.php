@@ -496,26 +496,9 @@ class format_course_menu extends format_base {
         echo "course_menu_strings['include_icons'] = ".$include_icons.";";
         echo "course_menu_strings['new_header'] = '".get_string('new_header', 'format_course_menu')."';";
         
-        //Remove icons if user has set them to be ignored
-        echo <<< ICON
-        /**
-        * Hides the CM icons if set to hide in course menu settings
-        * 
-        */
-        $(function() {
-            update_icon_visibility();
-        });
-        
-        function update_icon_visibility() {
-            if(course_menu_strings['include_icons'] !== 1) 
-                $("li[data_type=course_menu_element_cm] img").hide();
-        }
-        
-ICON;
-        
         echo "</script>";
     }
-
+    
     /**
      * Loads jquery using the built in (if moodle 2.5+) or uses an included version if < moodle 2.4
      * 
@@ -531,9 +514,12 @@ ICON;
             $PAGE->requires->jquery_plugin('ui-css');
         } else {
             $PAGE->requires->js("/course/format/course_menu/jquery/jquery-1.9.1.js");
-            $PAGE->requires->js("/course/format/course_menu/jquery/core/jquery-ui.min.js");
-            $PAGE->requires->css("/course/format/course_menu/jquery/core/themes/base/jquery.ui.all.css");
+            $PAGE->requires->js("/course/format/course_menu/jquery/jquery-ui.min.js");
+            $PAGE->requires->css("/course/format/course_menu/jquery/themes/base/jquery.ui.all.css");
         }
+        
+        $PAGE->requires->js("/course/format/course_menu/display.js");
+        
     }
 
 }
