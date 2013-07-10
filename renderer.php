@@ -209,7 +209,7 @@ class format_course_menu_renderer extends format_section_renderer_base {
                 //non-menu li containing cell type
                 echo html_writer::start_tag('li', array('class'=>'ignore'));
                      echo html_writer::start_tag('div', array('class'=>"cmf_pre_section_header"));
-                        echo html_writer::empty_tag("img", array('src'=>"$CFG->wwwroot/course/format/course_menu/pix/single_cell.png", "class"=>"cmf_cell_selection_button", "type"=>"single", "id"=>"cmf_cell_selection_button_single", "active"=>"1"));
+                        echo html_writer::empty_tag("img", array('src'=>"$CFG->wwwroot/course/format/course_menu/pix/single_cell.png", "class"=>"cmf_cell_selection_button", "type"=>"single", "id"=>"cmf_cell_selection_button_single", "active"=>"1", "alt" => get_string('cell_button_select', 'format_course_menu')));
                         echo html_writer::empty_tag("img", array('src'=>"$CFG->wwwroot/course/format/course_menu/pix/full_cell.png", "style"=>"display:none;", "class"=>"cmf_cell_selection_button", "type"=>"full", "id"=>"cmf_cell_selection_button_full", "active"=>"0"));
                      
                         //vert seperator
@@ -221,7 +221,7 @@ class format_course_menu_renderer extends format_section_renderer_base {
                             echo html_writer::start_tag('li');
                             
                                 echo html_writer::start_tag('div', array('class'=>"cmf_content_wrapper", "style"=>"display:inline"));
-                                    echo html_writer::empty_tag("img", array('src'=>"$CFG->wwwroot/course/format/course_menu/pix/header.png", "class"=>"cmf_cell_selection_button"));
+                                    echo html_writer::empty_tag("img", array('src'=>"$CFG->wwwroot/course/format/course_menu/pix/header.png", "class"=>"cmf_cell_selection_button", "alt" => get_string('cell_button_header_select', 'format_course_menu')));
                                 echo html_writer::end_tag('div');
                              echo html_writer::end_tag('li');
                         echo html_writer::end_tag('ol');

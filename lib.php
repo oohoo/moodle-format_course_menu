@@ -192,27 +192,27 @@ class format_course_menu extends format_base {
                     'default' => $courseconfig->coursedisplay,
                     'type' => PARAM_INT,
                 ), 'cmf_backgroundcolor' => array(
-                    'default' => '#aaaaaa',
+                    'default' => '#FAFAFA',
                     'type' => PARAM_TEXT,
                 ),
                 'cmf_row_horizontal_color' => array(
-                    'default' => '#aaaaaa',
+                    'default' => '#F5F5F5',
                     'type' => PARAM_TEXT,
                 ),
                 'cmf_headerfullbackgroundcolor' => array(
-                    'default' => '#aaaaaa',
+                    'default' => '#D3D3D3',
                     'type' => PARAM_TEXT,
                 ),
                 'cmf_headerbackgroundcolor' => array(
-                    'default' => '#aaaaaa',
+                    'default' => '#F5F5F5',
                     'type' => PARAM_TEXT,
                 ),
                 'cmf_cmfullbackgroundcolor' => array(
-                    'default' => '#aaaaaa',
+                    'default' => '#D3D3D3',
                     'type' => PARAM_TEXT,
                 ),
                 'cmf_cmbackgroundcolor' => array(
-                    'default' => '#aaaaaa',
+                    'default' => '#D3D3D3',
                     'type' => PARAM_TEXT,
                 ),
                 'cmf_allowicons' => array(
@@ -531,8 +531,8 @@ ICON;
             $PAGE->requires->jquery_plugin('ui-css');
         } else {
             $PAGE->requires->js("/course/format/course_menu/jquery/jquery-1.9.1.js");
-            $PAGE->requires->js("/course/format/course_menu/jquery/core/jquery-ui.min.js");
-            $PAGE->requires->css("/course/format/course_menu/jquery/core/themes/base/jquery.ui.all.css");
+            $PAGE->requires->js("/course/format/course_menu/jquery/jquery-ui.min.js");
+            $PAGE->requires->css("/course/format/course_menu/jquery/themes/base/jquery.ui.all.css");
         }
     }
 

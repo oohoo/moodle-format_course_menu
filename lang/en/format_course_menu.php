@@ -56,3 +56,6 @@ $string['save'] = 'Save';
 
 
 $string['main_header_editing_default'] = 'Click Here to Edit Header<br/>or Upload an Image';
+
+$string['cell_button_select'] = 'Toggle between single cell and full cell';
+$string['cell_button_header_select'] = 'Add a title';
