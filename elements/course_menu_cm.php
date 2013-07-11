@@ -80,13 +80,13 @@ class course_menu_cm {
      * @return type
      */
     public static function get_cm_element_display($course, $cmid, $is_full, array $parameters) {
-        global $PAGE, $DB;
+        global $PAGE, $DB, $COURSE;
 
         $html = ''; //html to be output
         //get core render for outputting the elements
         $course_renderer = $PAGE->get_renderer('core', 'course');
         
-        $db_mod = $DB->get_record('course_modules', array('id'=>$cmid));
+        $db_mod = $DB->get_record('course_modules', array('id'=>$cmid, 'course'=>$COURSE->id));
         
         if(!$db_mod) {
             course_menu_cm::remove_cm_element($cmid);
