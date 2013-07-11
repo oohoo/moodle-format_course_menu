@@ -75,7 +75,7 @@ class backup_format_course_menu_plugin extends backup_format_plugin  {
         " LEFT JOIN {course_menu_element_position} as element ON element.element_table_id=header.id " .
         " LEFT JOIN {course_menu} as menu ON menu.id=element.course_menu_id " . 
         "WHERE element.element_table='course_menu_element_header' AND menu.course=?";
-        echo $header_sql;
+
        // Use database to get source
        $header_element->set_source_sql($header_sql, array(backup::VAR_COURSEID));
         
@@ -87,7 +87,7 @@ class backup_format_course_menu_plugin extends backup_format_plugin  {
         
         // Use database to get source
         $cm_element->set_source_sql($cm_sql, array(backup::VAR_COURSEID));
-        echo $cm_sql;
+
         
         
         
