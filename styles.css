@@ -247,6 +247,7 @@ ul.course_menu_target_row  li a {
 .course-content ul.topics li.section .left .section-handle img.icon { padding:0; vertical-align: baseline; }
 
 .course_menu_cell{
+    height: 25px !important;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
@@ -254,4 +255,12 @@ ul.course_menu_target_row  li a {
 
 #id_cmf_header{
     height: 250px;
+}
+
+.ui-menu-item {
+    margin-left: 5px !important;
+    background-color: #F5F5F5;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
