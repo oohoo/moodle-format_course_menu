@@ -46,6 +46,9 @@ class course_menu_cm {
         //get the specific information for this type of element
         $layout_cm = $DB->get_record('course_menu_element_cm', array('id' => $this->element->element_table_id));
 
+        if(!$layout_cm)
+            return "";
+        
         //the id for the general element table (course_menu_position_element)
         $parameters['dataid'] = $this->element->id;
         
