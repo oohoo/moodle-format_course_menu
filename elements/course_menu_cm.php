@@ -48,7 +48,7 @@ class course_menu_cm {
 
         //the id for the general element table (course_menu_position_element)
         $parameters['dataid'] = $this->element->id;
-
+        
         //get the html representation of this element
         $html = $this->get_cm_element_display($COURSE, $layout_cm->course_module_id, $this->is_full(), $parameters);
 
@@ -56,6 +56,18 @@ class course_menu_cm {
         return $html;
     }
 
+    /**
+     * Deletes a CM element and its entry in the general table
+     * 
+     * @global moodle_database $DB
+     * @param type $cm_table_id
+     */
+    public static function remove_cm_element($cm_table_id) {
+        global $DB;
+        $DB->delete_records('course_menu_element_cm', array('id'=>$cm_table_id));
+        $DB->delete_records('course_menu_element_position', array('element_table_id'=>$cm_table_id, 'element_table'=>'course_menu_element_cm'));
+    }
+    
     /**
      * Generates the specific html output for the current element
      * 
@@ -68,12 +80,19 @@ class course_menu_cm {
      * @return type
      */
     public static function get_cm_element_display($course, $cmid, $is_full, array $parameters) {
-        global $PAGE;
+        global $PAGE, $DB;
 
         $html = ''; //html to be output
         //get core render for outputting the elements
         $course_renderer = $PAGE->get_renderer('core', 'course');
-
+        
+        $db_mod = $DB->get_record('course_modules', array('id'=>$cmid));
+        
+        if(!$db_mod) {
+            course_menu_cm::remove_cm_element($cmid);
+            return '';
+        }
+        
         //get info for all the mobs for this course
         $modinfos = get_fast_modinfo($course->id);
 
