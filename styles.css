@@ -51,7 +51,7 @@ box-shadow: 0 0 5px #888;
 }
 
 ul#format_course_menu_list li.ui-menu-divider {
-    display: block;
+    display: inline;
     height:100%;
     border-width: 0;
 }
