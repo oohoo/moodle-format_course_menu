@@ -73,6 +73,7 @@ ul#format_course_menu_list li.ui-menu-divider {
     height: 100%;
     overflow: hidden;
     margin: 5px;
+    white-space: nowrap;
 }
 
 .course_menu_target li ul li {

@@ -342,9 +342,8 @@ class format_course_menu extends format_base {
      */
     function create_edit_form_elements(&$mform, $forsection = false) {
         global $CFG, $PAGE;
-
-        $script = "<script>var course_menu_strings = new Array();</script>";
-        $script .= "<script>course_menu_strings['wwwroot'] ='$CFG->wwwroot';</script>";
+        $script = "<script>var course_menu_strings = new Array();";
+        $script .= "course_menu_strings['wwwroot'] ='$CFG->wwwroot';</script>";
 
         if(!$PAGE->headerprinted)
             $this->page_load_main_course_js();
