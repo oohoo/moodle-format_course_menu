@@ -26,8 +26,8 @@
 
 .cmf_cell_selection_button:hover {
     -moz-box-shadow: 0 0 5px #888;
--webkit-box-shadow: 0 0 5px#888;
-box-shadow: 0 0 5px #888;
+    -webkit-box-shadow: 0 0 5px#888;
+    box-shadow: 0 0 5px #888;
 }
 
 .course_menu_full_cell {
@@ -96,13 +96,13 @@ ul#format_course_menu_list li.ui-menu-divider {
     border-width: 1px;
     border-color: #aaaaaa;
     text-align: center;
-        -webkit-box-shadow: 0 0 40px #222;
-    -moz-box-shadow: 0 0 40px #222;
-    box-shadow: 0 0 40px #222;
+    -webkit-box-shadow: 3px 3px 5px #888;
+    -moz-box-shadow: 3px 3px 5px #888;
+    box-shadow: 3px 3px 5px #888;
 }
 
 .cmf_garbage_title {
-    
+
     position: absolute;
     text-align: center;
     width:  100%;
@@ -207,9 +207,9 @@ ul.course_menu_target_row  li a {
     left: 20%;
     width: 60%;
     z-index:    99999;
-    -webkit-box-shadow: 0 0 40px #222;
-    -moz-box-shadow: 0 0 40px #222;
-    box-shadow: 0 0 40px #222;
+    -webkit-box-shadow: 3px 3px 5px #888;
+    -moz-box-shadow: 3px 3px 5px #888;
+    box-shadow: 3px 3px 5px #888;
 }
 
 .fixed_header:active, .fixed_header:hover {
@@ -252,6 +252,7 @@ ul.course_menu_target_row  li a {
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 10px;
+    box-shadow: 3px 3px 5px #888;
 }
 
 #id_cmf_header{

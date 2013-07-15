@@ -97,6 +97,17 @@ $(function() {
          },
     });
 
+    //Upon hovering over the non-dropdown section of the menu (containing header / type)
+    //other dropdowns are collapsed
+    $(CMF_MENU_SELECTOR_I + " .cmf_pre_section_header").hover(
+           //handler in
+            function() {
+              $(CMF_MENU_SELECTOR_I).menu( "collapseAll", null, true );  
+            },
+        function() {});
+
+        
+
     //init the various lists on the page
     sortables_init();
     
@@ -443,6 +454,7 @@ function initialize_main_header_dialog() {
     });
 
     $(".cmf_main_header").click(function() {
+        set_dialog_position(".cmf_header_dialog");
         $(".cmf_header_dialog").dialog('open');
     });
 }
@@ -947,6 +959,31 @@ function cmf_ajax_update() {
             
   
     
+}
+
+/**
+ * Sets a dialogs position to be within the current viewpoint, centered horizontally,
+ * and 200 pxs from the top of the view
+ * 
+ * @param {string} dialog_selector The jquery selector for the dialog(s) to be positioned
+ */
+function set_dialog_position(dialog_selector) { 
+            var dialog = $(dialog_selector);
+                
+            //get full width of window
+            var fullwidth = $(window).width();
+            
+            //get dialog width
+            var width = dialog.dialog( "option", "width" );
+            
+            //need to determine the leftover space: window width - size of dialog: then half on each side!
+            var leftoffset = (fullwidth - width) / 2;
+            
+            //always have dialog 200 below top of viewpane
+            var topoffset = 200;
+            
+            //set our dynamic position
+            dialog.dialog('option', 'position',  [leftoffset, topoffset]);
 }
 
 
