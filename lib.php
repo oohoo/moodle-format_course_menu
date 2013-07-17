@@ -438,7 +438,7 @@ class format_course_menu extends format_base {
         if($is_course_main === 1 || $is_course_editing_main === 1) {
             
             //load jquery
-            $this->load_jQuery();
+            $this->cmf_load_jQuery();
             
             //dynamic colors
             $PAGE->requires->css('/course/format/course_menu/dynamic_colors.php?id=' . $COURSE->id);
@@ -503,7 +503,7 @@ class format_course_menu extends format_base {
      * 
      * @global moodle_page $PAGE
      */
-    public function load_jQuery() {
+    public function cmf_load_jQuery() {
         global $PAGE;
 
         if (moodle_major_version() >= '2.5') {
