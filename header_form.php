@@ -54,7 +54,7 @@ class course_menu_header_form extends moodleform {
         //course id hidden
         $mform->addElement('hidden', 'courseid', $this->course);
         $mform->setType('courseid', PARAM_INT);
-        
+    
     }
     
     /**

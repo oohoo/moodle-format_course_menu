@@ -146,7 +146,7 @@ class format_course_menu_renderer extends format_section_renderer_base {
         //if in edit mode - add edit dialog and iframe
         if ($PAGE->user_is_editing()) {
             echo html_writer::start_tag('div', array('class' => "cmf_header_dialog"));
-            echo html_writer::start_tag('iframe', array('frameBorder' => "0", 'scrolling' => 'no', 'style' => 'overflow:hidden;min-width:100%;min-height:100%', 'src' => "$CFG->wwwroot/course/format/course_menu/header.php?courseid=$COURSE->id"));
+            echo html_writer::start_tag('iframe', array('class'=>'cmf_header_iframe','frameBorder' => "0", 'scrolling' => 'no', 'style' => 'overflow:hidden;min-width:100%;min-height:100%', 'src' => "$CFG->wwwroot/course/format/course_menu/header.php?courseid=$COURSE->id"));
             echo html_writer::end_tag('iframe');
             echo html_writer::end_tag('div');
         }

@@ -18,6 +18,10 @@
 require_once('../../../config.php');
 require_once('header_form.php');
 
+$close_dialog = optional_param('close_dialog','0', PARAM_INT);
+inline_close_dialog_message($close_dialog);
+
+
 //get course id
 $courseid = required_param('courseid', PARAM_INT);
 
@@ -58,7 +62,7 @@ if ($fromform = $mform->get_data()){
     
     
     //redirect back to current page
-    redirect("$CFG->wwwroot/course/format/course_menu/header.php?courseid=$courseid");
+    redirect("$CFG->wwwroot/course/format/course_menu/header.php?courseid=$courseid&close_dialog=1");
 }
  
 /**
@@ -87,4 +91,30 @@ $mform->set_data($data);
 echo $OUTPUT->header();
 $mform->display();
 echo $OUTPUT->footer();
+
+
+/**
+ * Causes a signal flare to be sent to the parent of the iframe that contains this form
+ * This should be fired after the form has been updated - it sends the message
+ * that signals for the dialog that iframe is in, to be closed.
+ * 
+ * @param int $close_dialog
+ */
+function inline_close_dialog_message($close_dialog) {
+    if ($close_dialog == 1) {
+        echo <<< JS
+    <script> 
+
+         //send signal to parent
+         parent.postMessage(
+             "1",//send anything
+              "*"//no restrictions for domain
+          );
+
+</script> 
+   
+JS;
+    }
+}
+
 ?>

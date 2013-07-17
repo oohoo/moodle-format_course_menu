@@ -123,6 +123,8 @@ $(function() {
         conditional_floating_menus();
     });
 
+    iframe_listener();
+
 });
 
 
@@ -457,6 +459,7 @@ function initialize_main_header_dialog() {
         set_dialog_position(".cmf_header_dialog");
         $(".cmf_header_dialog").dialog('open');
     });
+
 }
 
 /**
@@ -985,6 +988,34 @@ function set_dialog_position(dialog_selector) {
             //set our dynamic position
             dialog.dialog('option', 'position',  [leftoffset, topoffset]);
 }
+
+
+
+
+/**
+ * Initialize the listener for when the iframe main header submits and sends a message 
+ * 
+ * When the main header form in the iframe is submitted - the dialog closes
+ * 
+ * Based on:
+ * http://davidwalsh.name/window-iframe
+ */
+function iframe_listener() {
+// Create IE + others compatible event handler
+    var eventMethod = window.addEventListener ? "addEventListener" : "attachEvent";
+    var eventer = window[eventMethod];
+    var messageEvent = eventMethod === "attachEvent" ? "onmessage" : "message";
+
+    // Listen to message from child window (main header form)
+    //when it fires close the dialog
+    eventer(messageEvent, function(e) {
+        $(".cmf_header_dialog").dialog('close');
+    }, false);
+
+}
+
+
+
 
 
 // Javascript functions for Topics course format
