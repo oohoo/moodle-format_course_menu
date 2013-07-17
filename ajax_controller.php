@@ -72,17 +72,23 @@ switch($operation) {
  */
 function remove_extraneous_layouts($layout_id, $element_ids) {
     global $DB;
-    
-    $ids = implode(",", $element_ids);//make a list of ids to be kept
-    
+
+    $ids = implode(",", $element_ids); //make a list of ids to be kept
+
+    if ($ids == null || $ids == "") {
+        $ids = "0";
+    }
+
     //custom sql to get lists of elements currently tied to the course menu instance, but not in our array of valid elements
     $sql = "SELECT * FROM {course_menu_element_position} WHERE id NOT IN ($ids) AND COURSE_MENU_ID=? ";
-     
+
+
+
     $extr_recs = $DB->get_records_sql($sql, array($layout_id));
-    
+
     //for all the elements not in valid ids array, but in database - remove them!
-    foreach($extr_recs as $record) {
-        $DB->delete_records($record->element_table, array('id'=>$record->element_table_id));
+    foreach ($extr_recs as $record) {
+        $DB->delete_records($record->element_table, array('id' => $record->element_table_id));
         $DB->delete_records('course_menu_element_position', array('id'=>$record->id));
     }
     

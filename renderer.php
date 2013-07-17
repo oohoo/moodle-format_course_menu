@@ -372,13 +372,7 @@ class format_course_menu_renderer extends format_section_renderer_base {
             $html .= html_writer::end_tag('ul');
             $html .= html_writer::end_tag('li');
         }
-
-        //always add an empty row
-        $html .= html_writer::start_tag('li', array('class' => 'course_menu_target_row_li'));
-        $html .= html_writer::start_tag('ul', array('class' => 'course_menu_target_row cmf_empty_target_row', 'id' => 'course_menu_target_row'));
-        $html .= html_writer::end_tag('ul');
-        $html .= html_writer::end_tag('li');
-
+        
         $html .= html_writer::end_tag('ul');
         $html .= html_writer::end_tag('div');
 
